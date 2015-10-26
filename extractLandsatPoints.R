@@ -1,3 +1,6 @@
+#Extract pixel data from landsat archive using predefined points from the portal site
+#designed to work over many years of imagery + several different sensors
+
 library(raster)
 library(rgdal)
 landsatBaseFolder='~/data/portal/'
