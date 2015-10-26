@@ -3,14 +3,11 @@
 
 library(raster)
 library(rgdal)
+library(doParallel)
 landsatBaseFolder='~/data/portal/'
 
-lsFile='/home/shawn/foo/LT50340381994048XXX03_sr_ndvi.tif'
 plotPoints=readOGR('/home/shawn/projects/portalShrubs/gisData', 'plotLandsatPoints')
 
-rasterFile=raster(lsFile)
-
-x=matrix(cbind(unlist(extract(rasterFile, pointsFile)), pointsFile$Plot), ncol=2)
 
 #Change these two vars when running on hipergator
 dataDir='~/data/portal/Landsat8/test/'
@@ -40,12 +37,19 @@ processImage = function(imageFileName) {
   
   #for each image suffix (band1, band2, etc), extract and store data
   for(thisSuffix in imageSuffixes){
-    #The name for this file to be 
+    #Put together the full name for this particular suffix
     tifFile=paste(tempDir,prefix,'_',thisSuffix,'.tif', sep='')
-    
+    #Read in raster .tif 
     thisTif=raster(tifFile)
+    #extract cell values based off the plotPoints shapefile
     thisTifData=unlist(extract(thisTif, plotPoints))
+    #Merge with the full DF for this image and name the columne to the correct band.
     imageData=cbind(imageData, thisTifData)
     colnames(imageData)[ncol(imageData)] = thisSuffix
   }
+  unlink(tempDir, recursive=TRUE, force=TRUE)
+  return(imageData)
 }
+
+#here be parallel (foreach %dopar%) code to process all the images and write a single csv file.
+
