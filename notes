@@ -19,6 +19,11 @@ for each file
 	delete unique temp folder
 		
 
+#############################################
+landsat data file format
+1 line for each pixel, plots can have multiple pixels
+
+sensor, year, doy, cvmask, band1, band2, band3, band4, band5, band6, band7, sensor
 
 ############################################
 general notes
