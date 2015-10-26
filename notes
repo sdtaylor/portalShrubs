@@ -1,15 +1,22 @@
 ############################################
 Landsat data extraction pseudocode
 
+#different sensors/sattelites have different band designations, 
+#so do each one at a atime
+
+for thisSensor in (LS5, LS8)
 get list of files (single image tar.gz file)
 
 for each file
-	extract everything (r system() command)
+	extract everything (r system() command) into temp folder unique to process
 	read metadata (date aquired, spacecraft, sensor, total cloud cover)
 		(can get everything above cept cloud cover from the filename)
 	for each image file
 		bands1-7, cloud_qa, 
 		extract data from points shapefile
+		return data
+
+	delete unique temp folder
 		
 
 
