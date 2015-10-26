@@ -17,9 +17,9 @@ dataDir='~/data/portal/Landsat8/test/'
 tempParentDir='/tmp/' 
 fileList=list.files(dataDir)
 
-imageSuffixes=c('cvmask','sr_band1','sr_band2','sr_band3','sr_band4','sr_band5','sr_band6','sr_band7')
+imageSuffixes=c('cfmask','sr_band1','sr_band2','sr_band3','sr_band4','sr_band5','sr_band6','sr_band7')
 
-processImage = function(imageFileName, toProcess) {
+processImage = function(imageFileName) {
   #create a temporary directory and untar the image into it
   tempDir=paste(tempParentDir, strsplit(imageFileName, '.', fixed=TRUE)[[1]][1],'/' , sep='')
   dir.create(tempDir)
@@ -34,6 +34,7 @@ processImage = function(imageFileName, toProcess) {
   
   #Build matrix with initial data
   imageData=data.frame(Plot=plotPoints$Plot)
+  imageData$sensor=sensor
   imageData$year=year
   imageData$doy=doy
   
@@ -44,6 +45,7 @@ processImage = function(imageFileName, toProcess) {
     
     thisTif=raster(tifFile)
     thisTifData=unlist(extract(thisTif, plotPoints))
-    imageData
+    imageData=cbind(imageData, thisTifData)
+    colnames(imageData)[ncol(imageData)] = thisSuffix
   }
 }
