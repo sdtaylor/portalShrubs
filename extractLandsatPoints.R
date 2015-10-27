@@ -4,15 +4,16 @@
 library(raster)
 library(rgdal)
 library(doParallel)
-landsatBaseFolder='~/data/portal/'
 
 plotPoints=readOGR('/home/shawn/projects/portalShrubs/gisData', 'plotLandsatPoints')
 
 
 #Change these two vars when running on hipergator
+plotPoints=readOGR('/home/shawn/projects/portalShrubs/gisData', 'plotLandsatPoints')
 dataDir='~/data/portal/Landsat8/test/'
 tempParentDir='/tmp/' 
-fileList=list.files(dataDir)
+numCores=1
+fileList=list.files(dataDir, '*tar.gz')
 
 imageSuffixes=c('cfmask','sr_band1','sr_band2','sr_band3','sr_band4','sr_band5','sr_band6','sr_band7')
 
@@ -51,5 +52,15 @@ processImage = function(imageFileName) {
   return(imageData)
 }
 
-#here be parallel (foreach %dopar%) code to process all the images and write a single csv file.
+#Setup parallel processing
+cl=makeCluster(numCores)
+registerDoParallel(cl)
 
+#here be parallel (foreach %dopar%) code to process all the images and write a single csv file.
+finalData=foreach(fileName = fileList, .combine=rbind, .packages=c('raster','rgdal')) %do% {
+  processImage(fileName)
+}
+
+stopCluster(cl)
+
+write.csv(finalData, paste(dataDir, 'finalData.csv', sep=''))
