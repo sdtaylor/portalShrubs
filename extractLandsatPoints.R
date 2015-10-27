@@ -5,14 +5,13 @@ library(raster)
 library(rgdal)
 library(doParallel)
 
-plotPoints=readOGR('/home/shawn/projects/portalShrubs/gisData', 'plotLandsatPoints')
-
-
-#Change these two vars when running on hipergator
+#Change these  vars when running on hipergator
 plotPoints=readOGR('/home/shawn/projects/portalShrubs/gisData', 'plotLandsatPoints')
 dataDir='~/data/portal/Landsat8/test/'
 tempParentDir='/tmp/' 
+finalDataFile='/scratch/lfs/shawntaylor/finalData.csv'
 numCores=1
+
 fileList=list.files(dataDir, '*tar.gz')
 
 imageSuffixes=c('cfmask','sr_band1','sr_band2','sr_band3','sr_band4','sr_band5','sr_band6','sr_band7')
@@ -40,10 +39,16 @@ processImage = function(imageFileName) {
   for(thisSuffix in imageSuffixes){
     #Put together the full name for this particular suffix
     tifFile=paste(tempDir,prefix,'_',thisSuffix,'.tif', sep='')
+    #Some image sets are missing a tif file, so check to see if it 
+    #exists before reading it. If it doens't fill in those values with -1.
+    if(! file.exists(tifFile)){
+      thisTifData=rep(-1, length(plotPoints$Plot))
+    } else {
     #Read in raster .tif 
     thisTif=raster(tifFile)
     #extract cell values based off the plotPoints shapefile
     thisTifData=unlist(extract(thisTif, plotPoints))
+    }
     #Merge with the full DF for this image and name the columne to the correct band.
     imageData=cbind(imageData, thisTifData)
     colnames(imageData)[ncol(imageData)] = thisSuffix
@@ -57,10 +62,10 @@ cl=makeCluster(numCores)
 registerDoParallel(cl)
 
 #here be parallel (foreach %dopar%) code to process all the images and write a single csv file.
-finalData=foreach(fileName = fileList, .combine=rbind, .packages=c('raster','rgdal')) %do% {
+finalData=foreach(fileName = fileList, .combine=rbind, .packages=c('raster','rgdal')) %dopar% {
   processImage(fileName)
 }
 
 stopCluster(cl)
 
-write.csv(finalData, paste(dataDir, 'finalData.csv', sep=''))
+write.csv(finalData, finalDataFile)
