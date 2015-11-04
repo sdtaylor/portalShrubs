@@ -26,6 +26,11 @@ landsat data file format
 
 sensor, year, doy, cvmask, band1, band2, band3, band4, band5, band6, band7, sensor
 
+###########################################
+transect questions
+
+TRBE = tragus berteronianus?
+
 ############################################
 general notes
 
