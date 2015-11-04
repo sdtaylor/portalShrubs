@@ -30,6 +30,9 @@ year92$Plot=substring(year92$Plot, 5)
 #Set year
 year92$Year=1992
 
+#Assign species name
+speciesList92=read.csv(paste(csvFolder, '1992_species_list.csv',sep=''))
+year92=merge(year92, speciesList92, by.x='SpeciesID',by.y='Number')
 
 ##############################
 #Year 1995
