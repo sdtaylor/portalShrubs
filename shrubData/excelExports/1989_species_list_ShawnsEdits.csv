@@ -1,41 +1,41 @@
-Number,Letter,"Species Name",Group
-1,ARAD,"Aristida adscensionis","Annual Grass"
-2,PAHI,"Panicum hirticaule","Annual Grass"
-3,CHVI,"Chloris virgata","Annual Grass"
-4,ERNE,"Eragrostis lehmanniana","Perennial Grass"
-5,TRCA,"Trichachne californica","Perennial Grass"
-6,MUPO,"Muhlenbergia porteri","Perennial Grass"
-7,PASP,"Panicum sp.","Annual Grass"
-8,ARLO,"Aristida longiseta","Perennial Grass"
-9,PAMI,"Panicum miliaceum","Annual Grass"
-10,ENDE,"Enneapogon desvauxii","Perennial Grass"
-11,SPCO,"Sprorobolus contractus","Perennial Grass"
-12,ARGL,"Aristidia glauca","Perennial Grass"
-13,ERLE,"Eragrostis intermedia","Perennial Grass"
-14,BOER,"Bouteloua eriopoda","Perennial Grass"
-15,SEMA,"Setaria macrostachya","Perennial Grass"
-16,ENDE,"same as 10","Perennial Grass"
-17,LYPH,"Lycurus phleoides","Perennial Grass"
-18,ERCI,"Eragrostis cilianensis","Annual Grass"
-19,GSHR,"06 plus shrub",Shrub
-20,TRPU,"Triden pulchellus","Perennial Grass"
-21,BOAR,"Bouteloua aristidoides","Annual Grass"
-22,BOBA,"Boutelousa barbata","Annual Grass"
-23,PAAR,"Panicum arizonicum","Annual Grass"
-24,TRBE,,"Annual Grass"
-25,BOCU,"Bouteloua curtipendula (not on plots)","Perennial Grass"
-26,OPSA,"open sand",Bare
-27,OPRO,"open rock",Bare
-28,HEPL,"herbaceous plant",Forb
-29,FLCE,"Flourensia cernua",Shrub
+Code Number,Letter,Species Name,Group
+1,ARAD,Aristida adscensionis,Annual Grass
+2,PAHI,Panicum hirticaule,Annual Grass
+3,CHVI,Chloris virgata,Annual Grass
+4,ERNE,Eragrostis lehmanniana,Perennial Grass
+5,TRCA,Trichachne californica,Perennial Grass
+6,MUPO,Muhlenbergia porteri,Perennial Grass
+7,PASP,Panicum sp.,Annual Grass
+8,ARLO,Aristida longiseta,Perennial Grass
+9,PAMI,Panicum miliaceum,Annual Grass
+10,ENDE,Enneapogon desvauxii,Perennial Grass
+11,SPCO,Sprorobolus contractus,Perennial Grass
+12,ARGL,Aristidia glauca,Perennial Grass
+13,ERLE,Eragrostis intermedia,Perennial Grass
+14,BOER,Bouteloua eriopoda,Perennial Grass
+15,SEMA,Setaria macrostachya,Perennial Grass
+16,ENDE,same as 10,Perennial Grass
+17,LYPH,Lycurus phleoides,Perennial Grass
+18,ERCI,Eragrostis cilianensis,Annual Grass
+19,GSHR,06 plus shrub,Shrub
+20,TRPU,Triden pulchellus,Perennial Grass
+21,BOAR,Bouteloua aristidoides,Annual Grass
+22,BOBA,Boutelousa barbata,Annual Grass
+23,PAAR,Panicum arizonicum,Annual Grass
+24,TRBE,,Annual Grass
+25,BOCU,Bouteloua curtipendula (not on plots),Perennial Grass
+26,OPSA,open sand,Bare
+27,OPRO,open rock,Bare
+28,HEPL,herbaceous plant,Annual Forb
+29,FLCE,Flourensia cernua,Shrub
 30,EPTR,Ephedra,Shrub
 31,PRJU,Prosopis,Shrub
-32,ACGR,"Acacia greggi",Shrub
-33,ACCO,"Acacia constricta",Shrub
-34,YUEL,"Yucca elata",Shrub
-35,GUSA,"Gutierrezia sarothrae",Shrub
+32,ACGR,Acacia greggi,Shrub
+33,ACCO,Acacia constricta,Shrub
+34,YUEL,Yucca elata,Shrub
+35,GUSA,Gutierrezia sarothrae,Shrub
 36,ZIAC,Zinnia,Shrub
-37,HAPP,Happlopappus,"Annual Forb"
+37,HAPP,Happlopappus,Annual Forb
 38,OPUN,Opuntia,Shrub
 39,CHLO,Cholla,Shrub
-40,SHRB,"mystery shrub",Shrub
+40,SHRB,mystery shrub,Shrub

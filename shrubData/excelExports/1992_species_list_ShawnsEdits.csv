@@ -1,56 +1,56 @@
-Number,Letter,"Species name",Group
-0,Bare,"Bare ground",Bare
-1,Hagr,"Haplopappus gracilis","Annual Forb"
-2,Erab,"Eriogonum abertianum","Annual Forb"
-3,Gusa,"Gutierrizia sarothrae",Shrub
-4,Erle,"Erograstis lehmanniana","Perennial Grass"
-5,Acco,"Acacia constricta",Shrub
-6,Taau,"Talinum aurantianum","Annual Forb"
-7,Rock,"Bare rock",Bare
-8,Mupo,"Muhlenbergia porteri","Perennial Grass"
-9,Eptr,"Ephedra trifurca",Shrub
-10,Mata,"Machaeranthera tanaecefolia","Annual Forb"
-11,Sisp,"Sida spinosa","Annual Forb"
-12,Crco,"Croton corymbulosa","Annual Forb"
-13,Arad,"Aristida adscensnis","Annual Grass"
-14,Trpu,"Tridens pulchellum","Perennial Grass"
-15,Taan,"Talinum angustissimum","Annual Forb"
-16,Debr,"Delea brachystachys","Annual Forb"
-17,Yucca,"Yucca elata ?",Shrub
-18,Spco,"Sporobolus contractus","Perennial Grass"
-19,Zipu,"Zinnia pumila",Shrub
-20,Popa,"Portulaca parvula","Annual Forb"
-21,Arlo,"Aristida longiseta","Perennial Grass"
-22,Boba,"Bouteluoa barbata","Annual Grass"
-23,Tila,"Tidestromia lanuginosa","Annual Forb"
-24,Arha,"Aristida homulosa","Annual Grass"
+Code Number,Letter,Species name,Group
+0,Bare,Bare ground,Bare
+1,Hagr,Haplopappus gracilis,Annual Forb
+2,Erab,Eriogonum abertianum,Annual Forb
+3,Gusa,Gutierrizia sarothrae,Shrub
+4,Erle,Erograstis lehmanniana,Perennial Grass
+5,Acco,Acacia constricta,Shrub
+6,Taau,Talinum aurantianum,Annual Forb
+7,Rock,Bare rock,Bare
+8,Mupo,Muhlenbergia porteri,Perennial Grass
+9,Eptr,Ephedra trifurca,Shrub
+10,Mata,Machaeranthera tanaecefolia,Annual Forb
+11,Sisp,Sida spinosa,Annual Forb
+12,Crco,Croton corymbulosa,Annual Forb
+13,Arad,Aristida adscensnis,Annual Grass
+14,Trpu,Tridens pulchellum,Perennial Grass
+15,Taan,Talinum angustissimum,Annual Forb
+16,Debr,Delea brachystachys,Annual Forb
+17,Yucca,Yucca elata ?,Shrub
+18,Spco,Sporobolus contractus,Perennial Grass
+19,Zipu,Zinnia pumila,Shrub
+20,Popa,Portulaca parvula,Annual Forb
+21,Arlo,Aristida longiseta,Perennial Grass
+22,Boba,Bouteluoa barbata,Annual Grass
+23,Tila,Tidestromia lanuginosa,Annual Forb
+24,Arha,Aristida homulosa,Annual Grass
 25,Nothing,,Bare
-26,Sipr,"Sida procumbens","Annual Forb"
-27,Caba,"Cassia bauhinoides","Perennial Forb"
-28,Hate,"Haplopappus tenuisectus","Annual Forb"
-29,Acgr,"Acacia gregii",Shrub
-30,Hean,"Helianthus annua","Annual Forb"
-31,Soel,"Solanum elaeagnifolium","Annual Forb"
-32,Babi,"Bahia biternata","Annual Forb"
-33,Boar,"Boutoluoa aristidoides","Annual Grass"
-34,Erdi,"Erigeron divergens","Annual Forb"
-35,Spb,"(to be determined)",unknown
-36,Bote,"Boerhaavia terreyana","Annual Forb"
-37,Bamu,"Baileya multiradiata","Annual Forb"
-38,Hasp,"Haplopappus spinulosus","Annual Forb"
-39,Chfr,"Chenopodium frementii","Annual Forb"
-40,Crpu,"Crotolaria pumila","Annual Forb"
-41,Sema,"Setaria macrostacha","Perennial Grass"
-42,Pena,"Perezia nana","Perennial Forb"
+26,Sipr,Sida procumbens,Annual Forb
+27,Caba,Cassia bauhinoides,Perennial Forb
+28,Hate,Haplopappus tenuisectus,Annual Forb
+29,Acgr,Acacia gregii,Shrub
+30,Hean,Helianthus annua,Annual Forb
+31,Soel,Solanum elaeagnifolium,Annual Forb
+32,Babi,Bahia biternata,Annual Forb
+33,Boar,Boutoluoa aristidoides,Annual Grass
+34,Erdi,Erigeron divergens,Annual Forb
+35,Spb,(to be determined),unknown
+36,Bote,Boerhaavia terreyana,Annual Forb
+37,Bamu,Baileya multiradiata,Annual Forb
+38,Hasp,Haplopappus spinulosus,Annual Forb
+39,Chfr,Chenopodium frementii,Annual Forb
+40,Crpu,Crotolaria pumila,Annual Forb
+41,Sema,Setaria macrostacha,Perennial Grass
+42,Pena,Perezia nana,Perennial Forb
 43,Opuntia,sp.,Shrub
-44,Trca,"Trichachne californica","Perennial Grass"
-45,Boin,"Boerhaavia intermedia","Annual Forb"
-46,Flce,"Flourensia cernua",Shrub
-47,Ampa,"Amaranthus palmeri","Annual Forb"
-48,Brde,"Brayulinea densa","Perennial Forb"
-49,Amar,"Ambrosia artemisiifolia","Annual Forb"
-50,Both,"Bothriochloa barbinodis","Perennial Grass"
-51,Eula,"Eurotia lanata",Shrub
-52,Lyto,"Lycium torreyi",Shrub
-53,Pain,"Parthenicum incanum",Shrub
-54,Coer,"Commelina erecta","Perennial Forb"
+44,Trca,Trichachne californica,Perennial Grass
+45,Boin,Boerhaavia intermedia,Annual Forb
+46,Flce,Flourensia cernua,Shrub
+47,Ampa,Amaranthus palmeri,Annual Forb
+48,Brde,Brayulinea densa,Perennial Forb
+49,Amar,Ambrosia artemisiifolia,Annual Forb
+50,Both,Bothriochloa barbinodis,Perennial Grass
+51,Eula,Eurotia lanata,Shrub
+52,Lyto,Lycium torreyi,Shrub
+53,Pain,Parthenicum incanum,Shrub
+54,Coer,Commelina erecta,Perennial Forb
