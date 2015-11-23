@@ -1,5 +1,5 @@
 Code Number,Species Name,Group
-0,,Bare
+blank,Bare Ground (no data sheet entry),Bare
 1,Acacia constricta,Shrub
 2,Acacia gregii,Shrub
 3,Allionia incarnata,Shrub
@@ -16,10 +16,12 @@ Code Number,Species Name,Group
 14,Baileya multiradiata,Annual Forb
 15,Boerhaavia coccinea,Perennial Forb
 16,Boerhaavia intermedia,Annual Forb
+16a,Boerhaavia sp.,Annual Forb
 17,Boerhaavia torreyana,Annual Forb
 17a,Boerhaavia coulteri,Annual Forb
 18,Bothriochloa barbinodis,Perennial Grass
 19,Bouteloua aristidoides,Annual Grass
+19a,Bouteloua sp.,Annual Grass
 20,Bouteloua barbata,Annual Grass
 21,Bouteloua eriopoda,Perennial Grass
 22,Brayulinea densa,Perennial Forb
@@ -45,6 +47,7 @@ Code Number,Species Name,Group
 42,Erigeron divergens,Annual Forb
 43,Eriochloa lemmoni,Annual Grass
 44,Eriogonum abertianum,Annual Forb
+e,Eriogonum abertianum,Annual Forb
 45,Eriogonum polycladon,Annual Forb
 46,Erodium cicutarium,Annual Forb
 47,Euphorbia micromera,Annual Forb
@@ -66,52 +69,45 @@ Code Number,Species Name,Group
 63,Mollugo cerviana,Annual Forb
 64,Mollugo verticillata,Annual Forb
 65,Muhlenbergia porteri,Perennial Grass
-66,Opuntia sp.,Shrub
-66a,Cholla,Shrub
-66b,Beavertail,Shrub
-67,Panicum arizonicum,Annual Grass
-67a,,
-68,Panicum hirticaule,Annual Grass
-69,Panicum miliaceum,Annual Grass
-70,Parthenicum incanum,Shrub
-71,Pectis papposa,Annual Forb
-72,Perezia nana,Perennial Forb
-73,Polygala tweedyi,Perennial Forb
-74,Portulaca parvula,Annual Forb
-75,Portulaca suffrutescens,Perennial Forb
-76,Proboscidea parviflora,Annual Forb
-77,Rumex augustifolia,Annual Forb
-78,Salsola kali,Annual Forb
-79,Sanvitalia aberti,Annual Forb
-80,Setaria macrostachya,Perennial Grass
-81,Sida physocalyx,Perennial Forb
-82,Sida procumbens,Annual Forb
-83,Sida spinosa,Annual Forb
-84,Sitanion hystrix,Perennial Grass
-85,Solanum elaeagnifolium,Perennial Forb
-86,Sphaeralcea laxa,Perennial Forb
-87,Sporobolus contractus,Perennial Grass
-88,Talinum angustissimum,Perennial Forb
-89t,,Perennial Forb
-89,Talinum aurantiacum,Perennial Forb
-90,Tetraclea coulteri,Perennial Forb
-91,Tidestromia lanuginosa,Annual Forb
-92,Tragus berteronianus,Annual Grass
-93,Trianthema portulacastrum,Annual Forb
-94,Trichachne californica,Perennial Grass
-95,Tridens pulchellum,Perennial Grass
-96,Verbesina encelioides,Annual Grass
-97,Yucca elata,Shrub
-98,Zinnia grandiflora,Shrub
-99,Zinnia pumila,Shrub
-c,Clear,Bare
+66,Cholla,Shrub
+67,Beavertail,Shrub
+68,Panicum arizonicum,Annual Grass
+69,Panicum hirticaule,Annual Grass
+69a,Panicum sp.,Annual Grass
+70,Panicum miliaceum,Annual Grass
+71,Parthenicum incanum,Shrub
+72,Pectis papposa,Annual Forb
+73,Perezia nana,Perennial Forb
+74,Polygala tweedyi,Perennial Forb
+75,Portulaca parvula,Annual Forb
+76,Portulaca suffrutescens,Perennial Forb
+77,Proboscidea parviflora,Annual Forb
+78,Rumex augustifolia,Annual Forb
+79,Salsola kali,Annual Forb
+80,Sanvitalia aberti,Annual Forb
+81,Setaria macrostachya,Perennial Grass
+82,Sida physocalyx,Perennial Forb
+83,Sida procumbens,Annual Forb
+84,Sida spinosa,Annual Forb
+85,Sitanion hystrix,Perennial Grass
+86,Solanum elaeagnifolium,Perennial Forb
+87,Sphaeralcea laxa,Perennial Forb
+88,Sporobolus contractus,Perennial Grass
+89,Talinum angustissimum,Perennial Forb
+90,Talinum aurantiacum,Perennial Forb
+91,Tetraclea coulteri,Perennial Forb
+92,Tidestromia lanuginosa,Annual Forb
+93,Tragus berteronianus,Annual Grass
+94,Trianthema portulacastrum,Annual Forb
+95,Trichachne californica,Perennial Grass
+96,Tridens pulchellum,Perennial Grass
+97,Verbesina encelioides,Annual Grass
+98,Yucca elata,Shrub
+99,Zinnia grandiflora,Shrub
+100,Zinnia pumila,Shrub
+,,
 r,Rock,Bare
 d,Dead Plant,Annual Grass
 m,Mesquite,Shrub
-t,,
-f,,Annual Forb
-pf,,
-shrub?,,
-z,,
-ps,,
-little plant,,Annual Forb
+l,Plant Litter,Annual Grass
+g,Unknown grass,Annual Grass
