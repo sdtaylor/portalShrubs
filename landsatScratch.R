@@ -25,14 +25,14 @@ landsatRaw = landsatRaw %>%
   
 ###################################################
 #carried over from processRawTranssectData.R
-shrubs=bind_rows(year92, year89) %>%
+shrubs=bind_rows(year92, year89, year95) %>%
   filter(Group=='Shrub') %>%
   spread(Group, cover)
 
 shrubs$Plot=as.integer(shrubs$Plot)
 
 data=full_join(shrubs, landsatRaw, by=c('Plot','Year' = 'year')) %>%
-  filter(Year==1989 | Year==1992)
+  filter(Year==1989 | Year==1992 | Year==1995)
 
 ##################################################
 
@@ -45,12 +45,15 @@ summary(aic)
 
 cvScores=data.frame()
 for(i in 1:nrow(data)){
-  model=lm(Shrub~., data=select(data, -Plot, -Year) %>% slice(-i))
-  model=step(model, direction='both')
+  #model=lm(log(Shrub)~., data=select(data, -Plot, -Year) %>% slice(-i))
+  #model=step(model, direction='both')
+  model=randomForest(log(Shrub)~., data=select(data, -Plot, -Year) %>% slice(-i), na.action=na.omit)
   y_pred=predict(model, newdata=slice(data, i))
-  cvScores=rbind(cvScores, c(data$Shrub[i], y_pred))
+  cvScores=rbind(cvScores, c(data$Shrub[i], exp(y_pred)))
 }
 colnames(cvScores)=c('Actual','Predicted')
+with(cvScores, plot(Predicted~Actual))
+abline(0,1)
 ##################################################
 valuesCols=colnames(landsatRaw)[-1:-2]
 data=landsatRaw[,valuesCols]
