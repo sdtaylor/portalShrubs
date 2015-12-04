@@ -27,6 +27,7 @@ processFormattedData=function(df){
 #Each year of transect data is slightly different, so  for the most part I just process each 
 #seperately 
 #################################
+#################################
 #year 1989. 
 #Read in and reshape data
 year89=read.csv(paste(csvFolder,'89in.csv',sep='')) %>%
@@ -44,7 +45,7 @@ year89=merge(year89, speciesList89, by.x='SpeciesID',by.y='Code.Number') %>%
 
 year89=processFormattedData(year89)
 
-
+###############################
 ###############################
 #year 1992
 #read in and reshape data
@@ -63,6 +64,7 @@ year92=merge(year92, speciesList92, by.x='SpeciesID',by.y='Code.Number') %>%
 
 year92=processFormattedData(year92)
 
+##############################
 ##############################
 #Year 1995
 #read in and reshape data
@@ -115,6 +117,7 @@ year95=left_join(year95, speciesList95, by=c('SpeciesID' = 'Code.Number'))  %>%
 year95=processFormattedData(year95)
 
 #################################
+#################################
 #year 98
 #Read in and reshape data
 year98=read.csv(paste(csvFolder,'98in.csv',sep=''), na.strings=c(''))
@@ -163,3 +166,10 @@ year98=left_join(year98, speciesList98, by=c('SpeciesID' = 'Code.Number'))  %>%
 
 
 year98=processFormattedData(year98)
+
+############################################
+############################################
+#  2001
+
+
+
