@@ -1,7 +1,7 @@
 Code Number,Species Name,Group
 blank,Bare Ground (no data sheet entry),Bare
 1,Acacia constricta,Shrub
-2,Acacia gregii,Shrub
+2,Acacia greggii,Shrub
 3,Allionia incarnata,Shrub
 4,Amaranthus palmeri,Annual Forb
 5,Ambrosia artemisifolia,Annual Forb
@@ -108,6 +108,6 @@ e,Eriogonum abertianum,Annual Forb
 ,,
 r,Rock,Bare
 d,Dead Plant,Annual Grass
-m,Mesquite,Shrub
+m,Prosopis,Shrub
 l,Plant Litter,Annual Grass
 g,Unknown grass,Annual Grass

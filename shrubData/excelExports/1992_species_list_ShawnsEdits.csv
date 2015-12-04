@@ -2,7 +2,7 @@ Code Number,Letter,Species Name,Group
 0,Bare,Bare ground,Bare
 1,Hagr,Haplopappus gracilis,Annual Forb
 2,Erab,Eriogonum abertianum,Annual Forb
-3,Gusa,Gutierrizia sarothrae,Shrub
+3,Gusa,Gutierrezia sarothrae,Shrub
 4,Erle,Erograstis lehmanniana,Perennial Grass
 5,Acco,Acacia constricta,Shrub
 6,Taau,Talinum aurantianum,Annual Forb
@@ -16,7 +16,7 @@ Code Number,Letter,Species Name,Group
 14,Trpu,Tridens pulchellum,Perennial Grass
 15,Taan,Talinum angustissimum,Annual Forb
 16,Debr,Delea brachystachys,Annual Forb
-17,Yucca,Yucca elata ?,Shrub
+17,Yucca,Yucca elata,Shrub
 18,Spco,Sporobolus contractus,Perennial Grass
 19,Zipu,Zinnia pumila,Shrub
 20,Popa,Portulaca parvula,Annual Forb
@@ -28,7 +28,7 @@ Code Number,Letter,Species Name,Group
 26,Sipr,Sida procumbens,Annual Forb
 27,Caba,Cassia bauhinoides,Perennial Forb
 28,Hate,Haplopappus tenuisectus,Annual Forb
-29,Acgr,Acacia gregii,Shrub
+29,Acgr,Acacia greggii,Shrub
 30,Hean,Helianthus annua,Annual Forb
 31,Soel,Solanum elaeagnifolium,Annual Forb
 32,Babi,Bahia biternata,Annual Forb
