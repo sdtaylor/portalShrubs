@@ -35,7 +35,7 @@ data=full_join(shrubs, landsatRaw, by=c('Plot','Year' = 'year')) %>%
   filter(Year==1989 | Year==1992 | Year==1995 | Year==1998)
 
 ####################################################
-#Look at change in each species
+#Look at change in each species of shrubs.
 shrubSpp=finalTransectData %>% filter(Group=='Shrub')
 
 for(thisSpp in unique(shrubSpp$Species.Name)){
@@ -45,6 +45,7 @@ for(thisSpp in unique(shrubSpp$Species.Name)){
   print(x)
 }
 
+#just the dominant spp of shrubs
 thisSpp='Acacia constricta'
 acacCONS=shrubSpp %>%
   filter(Species.Name==thisSpp) %>%
@@ -66,6 +67,20 @@ allShrubs=shrubSpp %>%
   ggplot(aes(factor(Year), shrubCover, ymax=0.4))+geom_boxplot()+geom_jitter()+ggtitle('All Shrub Cover')+theme_bw()
 
 gridExtra::grid.arrange(allShrubs, acacCONS, gutiSARO, flouCERN, ncol=2)
+
+###################################################
+#Change in perennial grass
+pGrass=finalTransectData %>% filter(Group=='Perennial Grass')
+
+pGrass %>%
+  group_by(Year, Plot) %>%
+  summarize(grassCover=sum(cover)) %>%
+  ggplot(aes(factor(Year), grassCover, ymax=0.4))+geom_boxplot()+geom_jitter()+ggtitle('Perennial Grass Cover')+theme_bw()
+
+pGrass %>%
+  group_by(Year) %>%
+  summarize(richness=n_distinct(Species.Name))
+
 ##################################################
 logit=function(vec){
   log(vec/(1-vec))
