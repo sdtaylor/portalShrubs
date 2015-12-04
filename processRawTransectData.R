@@ -17,7 +17,7 @@ processFormattedData=function(df){
   #Change Species.Name to Group here to get total cover of functional groups
   #Change to Species.Name to get total cover of species for diagnostic
   df=df %>%
-    group_by(Year, Plot, Species.Name) %>%
+    group_by(Year, Plot, Species.Name, Group) %>%
     summarize(n=n())
   
   df=merge(df, transectTotals, by=c('Year','Plot'))
