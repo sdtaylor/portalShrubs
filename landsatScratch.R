@@ -34,6 +34,38 @@ shrubs$Plot=as.integer(shrubs$Plot)
 data=full_join(shrubs, landsatRaw, by=c('Plot','Year' = 'year')) %>%
   filter(Year==1989 | Year==1992 | Year==1995 | Year==1998)
 
+####################################################
+#Look at change in each species
+shrubSpp=finalTransectData %>% filter(Group=='Shrub')
+
+for(thisSpp in unique(shrubSpp$Species.Name)){
+  x=shrubSpp %>%
+    filter(Species.Name==thisSpp) %>%
+    ggplot(aes(factor(Year), cover, ymax=0.4))+geom_boxplot()+geom_jitter()+ggtitle(thisSpp)+theme_bw()
+  print(x)
+}
+
+thisSpp='Acacia constricta'
+acacCONS=shrubSpp %>%
+  filter(Species.Name==thisSpp) %>%
+  ggplot(aes(factor(Year), cover, ymax=0.4))+geom_boxplot()+geom_jitter()+ggtitle(thisSpp)+theme_bw()
+
+thisSpp='Gutierrezia sarothrae'
+gutiSARO=shrubSpp %>%
+  filter(Species.Name==thisSpp) %>%
+  ggplot(aes(factor(Year), cover, ymax=0.4))+geom_boxplot()+geom_jitter()+ggtitle(thisSpp)+theme_bw()
+
+thisSpp='Flourensia cernua'
+flouCERN=shrubSpp %>%
+  filter(Species.Name==thisSpp) %>%
+  ggplot(aes(factor(Year), cover, ymax=0.4))+geom_boxplot()+geom_jitter()+ggtitle(thisSpp)+theme_bw()
+
+allShrubs=shrubSpp %>%
+  group_by(Year, Plot) %>%
+  summarize(shrubCover=sum(cover)) %>%
+  ggplot(aes(factor(Year), shrubCover, ymax=0.4))+geom_boxplot()+geom_jitter()+ggtitle('All Shrub Cover')+theme_bw()
+
+gridExtra::grid.arrange(allShrubs, acacCONS, gutiSARO, flouCERN, ncol=2)
 ##################################################
 logit=function(vec){
   log(vec/(1-vec))
