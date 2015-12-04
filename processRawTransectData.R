@@ -122,6 +122,7 @@ year95=processFormattedData(year95)
 #Read in and reshape data
 year98=read.csv(paste(csvFolder,'98in.csv',sep=''), na.strings=c(''))
 
+#Need to force some of the columns into character to work with gather()
 year98[,colnames(year98)[-2]]= lapply(year98[,colnames(year98)[-2]], as.character)
 
 year98 = year98 %>% gather(Plot, SpeciesID, -Transect, -Position)
@@ -170,6 +171,27 @@ year98=processFormattedData(year98)
 ############################################
 ############################################
 #  2001
+year01=read.csv(paste(csvFolder,'01in.csv',sep=''), na.strings=c(''))
 
+#Need to force some of the columns into character to work with gather()
+year01[,colnames(year01)[-2]]= lapply(year01[,colnames(year01)[-2]], as.character)
 
+year01 = year01 %>% gather(Plot, SpeciesID, -Transect, -Position)
 
+#Extract plot number from old column data, eg '89P16'
+year01$Plot=substring(year01$Plot, 5)
+#Set year
+year01$Year=2001
+
+#Numerous blank/no entries this year. Assuming they are bare ground. Those get read as NA's, so change
+#that here to 'blank'. 
+year01$SpeciesID[is.na(year01$SpeciesID)]='blank'
+
+speciesList01=read.csv(paste(csvFolder, '2001_species_list_ShawnsEdits.csv',sep=''))
+
+#Assigne species names
+year01=left_join(year01, speciesList01, by=c('SpeciesID' = 'Code.Number'))  %>%
+  rename(Point = Position) %>%
+  select(Transect, Point, Plot, Year, Group) 
+
+year01=processFormattedData(year01)
