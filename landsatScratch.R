@@ -25,29 +25,33 @@ landsatRaw = landsatRaw %>%
   
 ###################################################
 #carried over from processRawTranssectData.R
-shrubs=bind_rows(year92, year89, year95) %>%
+shrubs=bind_rows(year92, year89, year95, year98, year01) %>%
   filter(Group=='Shrub') %>%
   spread(Group, cover)
 
 shrubs$Plot=as.integer(shrubs$Plot)
 
 data=full_join(shrubs, landsatRaw, by=c('Plot','Year' = 'year')) %>%
-  filter(Year==1989 | Year==1992 | Year==1995)
+  filter(Year==1989 | Year==1992 | Year==1995 | Year==1998)
 
 ##################################################
+logit=function(vec){
+  log(vec/(1-vec))
+}
 
+##################################################
 rf=randomForest(Shrub~., data=select(data, -Plot, -Year))
 
 
-lm1=lm(Shrub~., data=select(data, -Plot, -Year))
+lm1=lm(log(Shrub)~., data=select(data, -Plot, -Year))
 aic=step(lm1, direction='both')
 summary(aic)
 
 cvScores=data.frame()
 for(i in 1:nrow(data)){
-  #model=lm(log(Shrub)~., data=select(data, -Plot, -Year) %>% slice(-i))
-  #model=step(model, direction='both')
-  model=randomForest(log(Shrub)~., data=select(data, -Plot, -Year) %>% slice(-i), na.action=na.omit)
+  model=lm(log(Shrub)~., data=select(data, -Year) %>% slice(-i))
+  model=step(model, direction='both')
+  #model=betareg(Shrub~., data=select(data, -Plot, -Year) %>% slice(-i), na.action=na.omit)
   y_pred=predict(model, newdata=slice(data, i))
   cvScores=rbind(cvScores, c(data$Shrub[i], exp(y_pred)))
 }
