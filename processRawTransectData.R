@@ -14,8 +14,10 @@ processFormattedData=function(df){
     group_by(Year, Plot) %>%
     summarize(totalPoints=n())
   
+  #Change Species.Name to Group here to get total cover of functional groups
+  #Change to Species.Name to get total cover of species for diagnostic
   df=df %>%
-    group_by(Year, Plot, Group) %>%
+    group_by(Year, Plot, Species.Name) %>%
     summarize(n=n())
   
   df=merge(df, transectTotals, by=c('Year','Plot'))
@@ -41,10 +43,11 @@ year89$Year=1989
 #Assign species name
 speciesList89=read.csv(paste(csvFolder, '1989_species_list_ShawnsEdits.csv',sep=''))
 year89=merge(year89, speciesList89, by.x='SpeciesID',by.y='Code.Number') %>%
-  select(Transect, Point, Plot, Year, Group)
+  select(Transect, Point, Plot, Year, Group, Species.Name)
 
 year89=processFormattedData(year89)
 
+finalTransectData=year89
 ###############################
 ###############################
 #year 1992
@@ -60,10 +63,11 @@ year92$Year=1992
 #Assign species name
 speciesList92=read.csv(paste(csvFolder, '1992_species_list_ShawnsEdits.csv',sep=''))
 year92=merge(year92, speciesList92, by.x='SpeciesID',by.y='Code.Number') %>%
-  select(Transect, Point, Plot, Year, Group)
+  select(Transect, Point, Plot, Year, Group, Species.Name)
 
 year92=processFormattedData(year92)
 
+finalTransectData=rbind(finalTransectData, year92)
 ##############################
 ##############################
 #Year 1995
@@ -108,7 +112,7 @@ year95$SpeciesID=as.character(sapply(year95$SpeciesID, getFirstValue))
 #Assigne species names
 year95=left_join(year95, speciesList95, by=c('SpeciesID' = 'Code.Number'))  %>%
   rename(Point = Position) %>%
-  select(Transect, Point, Plot, Year, Group) %>%
+  select(Transect, Point, Plot, Year, Group, Species.Name) %>%
   #Some issues still in this year, but I will filter them out for the time being. Specifcially plot 22 has many problems
   filter(Plot!=22)
 
@@ -116,6 +120,7 @@ year95=left_join(year95, speciesList95, by=c('SpeciesID' = 'Code.Number'))  %>%
 
 year95=processFormattedData(year95)
 
+finalTransectData=rbind(finalTransectData, year95)
 #################################
 #################################
 #year 98
@@ -163,11 +168,12 @@ year98$SpeciesID=as.character(sapply(year98$SpeciesID, getFirstValue))
 #Assigne species names
 year98=left_join(year98, speciesList98, by=c('SpeciesID' = 'Code.Number'))  %>%
   rename(Point = Position) %>%
-  select(Transect, Point, Plot, Year, Group) 
+  select(Transect, Point, Plot, Year, Group, Species.Name) 
 
 
 year98=processFormattedData(year98)
 
+finalTransectData=rbind(finalTransectData, year98)
 ############################################
 ############################################
 #  2001
@@ -192,6 +198,8 @@ speciesList01=read.csv(paste(csvFolder, '2001_species_list_ShawnsEdits.csv',sep=
 #Assigne species names
 year01=left_join(year01, speciesList01, by=c('SpeciesID' = 'Code.Number'))  %>%
   rename(Point = Position) %>%
-  select(Transect, Point, Plot, Year, Group) 
+  select(Transect, Point, Plot, Year, Group, Species.Name) 
 
 year01=processFormattedData(year01)
+
+finalTransectData=rbind(finalTransectData, year01)
