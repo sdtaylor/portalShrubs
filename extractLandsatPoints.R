@@ -5,12 +5,37 @@ library(raster)
 library(rgdal)
 library(doParallel)
 
-#Change these  vars when running on hipergator
-plotPoints=readOGR('/home/shawn/projects/portalShrubs/gisData', 'plotLandsatPoints')
-dataDir='~/data/portal/Landsat8/test/'
-tempParentDir='/tmp/' 
-finalDataFile='/scratch/lfs/shawntaylor/finalData.csv'
-numCores=1
+#If running this on hipergator, use "Rscript weatherDependentGrowthModel.R hipergator" 
+args=commandArgs(trailingOnly = TRUE)
+
+#If the 1st argument is na (ie, no argument), then this script is being run inside rstudo
+if(is.na(args[1])){
+  print('Running locally (probably rstudio)')
+  dataDir='~/data/portal/Landsat/'
+  finalDataFile='~/projects/portalShrubs/landsatOutput.csv'
+  tempParentDir='/tmp/' 
+  numProcs=1
+  
+} else if(args[1]=='local') {
+  print('Running locally (probably cli)')
+  dataDir='~/data/portal/Landsat/'
+  finalDataFile='~/projects/portalShrubs/landsatOutput.csv'
+  tempParentDir='/tmp/' 
+  numProcs=1
+
+  #If not na, then check to see if the 1st arg means running in the ufl hpc.  
+} else if(args[1]=='hipergator') {
+  print('Running on hipergator')
+  dataDir='/scratch/lfs/shawntaylor/portalLandsat/'
+  finalDataFile='/scratch/lfs/shawntaylor/finalData.csv'
+  tempParentDir='/tmp/' 
+  
+  numProcs=32
+}
+
+#The shapefile containg points/shapes for each of 24 plots
+plotPoints=readOGR('./gisData', 'plotLandsatPoints')
+
 
 fileList=list.files(dataDir, '*tar.gz')
 
