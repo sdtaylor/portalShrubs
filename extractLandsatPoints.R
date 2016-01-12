@@ -1,11 +1,11 @@
 #Extract pixel data from landsat archive using predefined points from the portal site
 #designed to work over many years of imagery + several different sensors
-
+library(dplyr)
 library(raster)
 library(rgdal)
 library(doParallel)
 
-#If running this on hipergator, use "Rscript weatherDependentGrowthModel.R hipergator" 
+#If running this on hipergator, use "Rscript <script> hipergator" 
 args=commandArgs(trailingOnly = TRUE)
 
 #If the 1st argument is na (ie, no argument), then this script is being run inside rstudo
@@ -27,14 +27,15 @@ if(is.na(args[1])){
 } else if(args[1]=='hipergator') {
   print('Running on hipergator')
   dataDir='/scratch/lfs/shawntaylor/portalLandsat/'
-  finalDataFile='/scratch/lfs/shawntaylor/finalData.csv'
+  finalDataFile='/scratch/lfs/shawntaylor/portalLandsatPixelValues.csv'
   tempParentDir='/tmp/' 
   
   numProcs=32
 }
 
 #The shapefile containg points/shapes for each of 24 plots
-plotPoints=readOGR('./gisData', 'plotLandsatPoints')
+#plotPoints=readOGR('./gisData', 'plotLandsatPoints')
+plotOutlines=readOGR('./gisData', 'plotOutlines')
 
 
 fileList=list.files(dataDir, '*tar.gz')
@@ -55,7 +56,7 @@ processImage = function(imageFileName) {
   doy=substr(prefix, 14,16)
   
   #Build matrix with initial data
-  imageData=data.frame(Plot=plotPoints$Plot)
+  imageData=data.frame(Plot=1:24)
   imageData$sensor=sensor
   imageData$year=year
   imageData$doy=doy
@@ -67,30 +68,36 @@ processImage = function(imageFileName) {
     #Some image sets are missing a tif file, so check to see if it 
     #exists before reading it. If it doens't fill in those values with -1.
     if(! file.exists(tifFile)){
-      thisTifData=rep(-1, length(plotPoints$Plot))
+      thisTifData=data.frame(Plot=1:24, value=-1)
+      colnames(thisTifData)=c('Plot',thisSuffix)
     } else {
     #Read in raster .tif 
     thisTif=raster(tifFile)
-    #extract cell values based off the plotPoints shapefile
-    thisTifData=unlist(extract(thisTif, plotPoints))
+    #extract all cell values within a plot outline. Along with weights corrosponding to the cells area in outline
+    thisTifData=extract(thisTif, plotOutlines, weights=TRUE, normalizeWeights=TRUE, df=TRUE)
+    colnames(thisTifData)=c('Plot','value','weight')
+    thisTifData = thisTifData %>%
+      mutate(weightedValue=value*weight) %>%
+      group_by(Plot) %>%
+      summarize(value=sum(weightedValue))
+    colnames(thisTifData)=c('Plot',thisSuffix)
     }
     #Merge with the full DF for this image and name the columne to the correct band.
-    imageData=cbind(imageData, thisTifData)
-    colnames(imageData)[ncol(imageData)] = thisSuffix
+    imageData=left_join(imageData, thisTifData, by='Plot')
   }
   unlink(tempDir, recursive=TRUE, force=TRUE)
   return(imageData)
 }
 
 #Setup parallel processing
-cl=makeCluster(numCores)
+cl=makeCluster(numProcs)
 registerDoParallel(cl)
 
 #here be parallel (foreach %dopar%) code to process all the images and write a single csv file.
-finalData=foreach(fileName = fileList, .combine=rbind, .packages=c('raster','rgdal')) %dopar% {
+finalData=foreach(fileName = fileList, .combine=rbind, .packages=c('raster','rgdal','dplyr')) %dopar% {
   processImage(fileName)
 }
 
 stopCluster(cl)
 
-write.csv(finalData, finalDataFile)
+write.csv(finalData, finalDataFile, row.names = FALSE)
